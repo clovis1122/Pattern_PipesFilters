@@ -17,8 +17,8 @@ import main
 
 
 #Pipe
-def pipeOut(file):
-    main.pipeIn(file)
+def pipe_out(file):
+    main.pipe_in(file)
 
 
 
@@ -43,12 +43,12 @@ else:
 
 while not queue.empty():
     if(queue.qsize()>=5):
-        t1 = threading.Thread(target=main.pipeIn( pipeOut(queue.get()) ))
-        t2 = threading.Thread(target=main.pipeIn( pipeOut(queue.get()) ))
-        t3 = threading.Thread(target=main.pipeIn( pipeOut(queue.get()) ))
-        t4 = threading.Thread(target=main.pipeIn( pipeOut(queue.get()) ))
-        t5 = threading.Thread(target=main.pipeIn( pipeOut(queue.get()) ))
+        t1 = threading.Thread(target=main.pipe_in( pipe_out(queue.get()) ))
+        t2 = threading.Thread(target=main.pipe_in( pipe_out(queue.get()) ))
+        t3 = threading.Thread(target=main.pipe_in( pipe_out(queue.get()) ))
+        t4 = threading.Thread(target=main.pipe_in( pipe_out(queue.get()) ))
+        t5 = threading.Thread(target=main.pipe_in( pipe_out(queue.get()) ))
         join()
     else:
         while not queue.empty():
-            t1 = threading.Thread(target=main.pipeIn( pipeOut(queue.get()) ))
+            t1 = threading.Thread(target=main.pipe_in( pipe_out(queue.get()) ))
