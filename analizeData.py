@@ -34,8 +34,6 @@ if os.path.isdir(directory):
     for file in os.listdir(directory):
         if file.endswith(".csv"):
             queue.put(file)
-
-
 else:
     print("Directory "+ directory +" does not exists")
 
