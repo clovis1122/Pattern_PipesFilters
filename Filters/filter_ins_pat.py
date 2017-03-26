@@ -7,6 +7,7 @@ and will deliver a file with two cells:
 """
 
 import csv
+import main
 
     ####################################################################
     ###                         pipe in                              ###
@@ -40,7 +41,8 @@ def __main__(file):
         writer.writerow([row[2], row[0]])
 
 
-    ins_pat.close()
+    main.files_to_analize.put(ins_pat)
+    # ins_pat.close()
     doc.close()
 
     #Send the file trough out the pipe_out

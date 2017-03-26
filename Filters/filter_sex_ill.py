@@ -6,6 +6,7 @@ and will deliver a file with two cells:
     [sex | illness]
 """
 import csv
+import main
 
     ####################################################################
     ###                         pipe in                              ###

@@ -6,6 +6,7 @@ This module will recieve a file, and ...
 """
 
 import threading
+import Queue
 import filter_ins_pat
 import filter_age_ill
 import filter_ill_time
@@ -45,6 +46,12 @@ def pipe_out(file):
     t5.start()
     t6.start()
 
+    t1.join()
+    t2.join()
+    t3.join()
+    t4.join()
+    t5.join()
+    t6.join()
 
     ####################################################################
     ###                         "main"                               ###
@@ -52,3 +59,11 @@ def pipe_out(file):
 
 def __main__(file):
     pipe_out(file)
+    while not files_to_analize.empty():
+        files_to_analize.get()
+
+
+
+
+
+files_to_analize = Queue.Queue()
