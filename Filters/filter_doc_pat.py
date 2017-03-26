@@ -45,4 +45,4 @@ def __main__(file):
     doc_pat.close()
     doc.close()
 
-    #Send the file trought the pipe_out
+    #Send the file trough out the pipe_out
