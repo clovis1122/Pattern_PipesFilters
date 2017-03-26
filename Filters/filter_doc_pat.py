@@ -34,20 +34,15 @@ def pipe_in(file):
 def __main__(file):
     doc = open(file,"rb")
     reader = csv.reader(doc)
+    doc_pat = open('doc_pat.csv', 'wb')
+    writer = csv.writer(doc_pat)
 
-    row_num = 0
     for row in reader:
-        # print(row)
-        
-        # for col in row:
-        #     if(col == "NOMBRE"):
-
-        # if(row_num==0):
-        #     for col in row:
-        #         if()
+        # print row
+        writer.writerow([row[0], row[9]])
 
 
-
+    doc_pat.close()
     doc.close()
 
-    # print(file)
+    #Send the file trought the pipe_out
