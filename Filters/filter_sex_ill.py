@@ -20,7 +20,9 @@ def pipe_in(file):
     ###                         pipe out                             ###
     ####################################################################
 
-# def pipe_out(file):
+def pipe_out(file):
+    main.files_to_analize.put(file)
+
 
 
 
@@ -42,3 +44,4 @@ def __main__(file):
 
     sex_ill.close()
     doc.close()
+    pipe_out(sex_ill.name)

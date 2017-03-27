@@ -22,7 +22,8 @@ def pipe_in(file):
     ###                         pipe out                             ###
     ####################################################################
 
-# def pipe_out(file):
+def pipe_out(file):
+    main.mean_analize_queue.put(file)
 
 
 
@@ -43,4 +44,5 @@ def __main__(file):
 
     age_ill.close()
     doc.close()
-    filter_mean.pipe_in(age_ill.name)
+    pipe_out(age_ill.name)
+    # filter_mean.pipe_in(age_ill.name)

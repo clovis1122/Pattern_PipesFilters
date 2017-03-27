@@ -14,7 +14,8 @@ import matplotlib.pyplot as plt
 
 def pipe_in(file):
     while not main.mean_dictionary_queue.empty():
-        __main__(main.mean_dictionary_queue.get())
+        dict = main.mean_dictionary_queue.get()
+        __main__(dict)
 
 
 

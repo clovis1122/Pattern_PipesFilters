@@ -8,7 +8,7 @@ and will deliver a file with two cells:
 
 import csv
 import main
-import filter_mean
+# import filter_mean
 
     ####################################################################
     ###                         pipe in                              ###
@@ -22,7 +22,9 @@ def pipe_in(file):
     ###                         pipe out                             ###
     ####################################################################
 
-# def pipe_out(file):
+def pipe_out(file):
+    main.mean_analize_queue.put(file)
+    #File is sent to mean queue
 
 
 
@@ -44,6 +46,7 @@ def __main__(file):
 
     ill_inv.close()
     doc.close()
-    filter_mean.pipe_in(ill_inv.name)
+    pipe_out(ill_inv.name)
 
+    # filter_mean.pipe_in(ill_inv.name)
     #Send the file trought the pipe_out

@@ -13,8 +13,11 @@ import filter_ill_time
 import filter_sex_ill
 import filter_ill_inv
 import filter_doc_pat
+import filter_mean
+import filter_frequency
 import filter_histogram
 import filter_pie_chart
+
 
 
 
@@ -62,17 +65,34 @@ def pipe_out(file):
 def __main__(file):
     pipe_out(file)
 
-    while not files_to_analize.empty():
-        files_to_analize.get()
 
-    # filter_pie_chart.pipe_in(mean_dictionary_queue)
+    """Maybe those whiles are going to be moved to pipe_out"""
+
+    # Sending files to filter_frequency
+
+    # while not files_to_analize.empty():
+    #     file = files_to_analize.get()
+    #     filter_frequency.pipe_in(file)
+
+
+    # Sending files to filter_mean
+    while not mean_analize_queue.empty():
+        file = mean_analize_queue.get()
+        filter_mean.pipe_in(file)
+
+
+    # Sending files to filter_histogram
     while not mean_dictionary_queue.empty():
         dictionary = mean_dictionary_queue.get()
         filter_histogram.pipe_in(dictionary)
-    #     filter_pie_chart.pipe_in(dictionary) #This one should extract from the frequency_dictionary_queue
+        # filter_pie_chart.pipe_in(dictionary) #This one should extract from the frequency_dictionary_queue
         # mean_dictionary_queue.get())
 
 
 
-files_to_analize = Queue.Queue()
-mean_dictionary_queue = Queue.Queue()
+
+
+
+files_to_analize = Queue.Queue()        # Files for frequency analysis
+mean_dictionary_queue = Queue.Queue()   # Files to generate histograms
+mean_analize_queue = Queue.Queue()      # Files for mean analysis

@@ -21,7 +21,9 @@ def pipe_in(file):
     ###                         pipe out                             ###
     ####################################################################
 
-# def pipe_out(file):
+def pipe_out(file):
+    main.files_to_analize.put(file)
+
 
 
 
@@ -41,8 +43,8 @@ def __main__(file):
         writer.writerow([row[2], row[0]])
 
 
-    main.files_to_analize.put(ins_pat)
-    # ins_pat.close()
+    pipe_out(ins_pat.name)
+    ins_pat.close()
     doc.close()
 
     #Send the file trough out the pipe_out

@@ -24,6 +24,7 @@ def pipe_in(file):
 
 def pipe_out(mean_dictionary):
     #Send the mean_dictionary to the main mean_dictionary_queue
+
     main.mean_dictionary_queue.put(mean_dictionary)
 
 
@@ -115,11 +116,11 @@ def mean_ill_inv(file):
             mean_dictionary[key] = (sum_invoices/cant_invoices)
 
 
-        #Testing mean dictionary
+        # Testing mean dictionary
         # for key in mean_dictionary:
         #     print key, mean_dictionary[key]
 
-        #Returning mean_dictionary
+        # Returning mean_dictionary
         pipe_out(mean_dictionary)
 
 
@@ -127,7 +128,6 @@ def __main__(file):
 
     doc = open(file,"rb")
     reader = csv.reader(doc)
-
 
     if(file == "age_ill.csv"):
         doc.close()
