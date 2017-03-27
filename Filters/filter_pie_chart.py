@@ -39,7 +39,7 @@ def __main__(mean_dictionary,name):
         y.append(mean_dictionary.get(key))
         explode.append(0)
 
-
+#
 
     fig1, ax1 = plt.subplots()
     ax1.pie(y, explode=explode, labels=x, autopct='%1.1f%%',
