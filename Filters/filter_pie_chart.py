@@ -38,14 +38,7 @@ def __main__(mean_dictionary):
         y.append(mean_dictionary.get(key))
         explode.append(0)
 
-    print("HEEEEY PIE")
 
-
-
-    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-    # labels = 'Frogs', 'Hogs', 'Dogs', 'Logs'
-    # sizes = [15, 30, 45, 10]
-    # explode = (0, 0.1, 0, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
     fig1, ax1 = plt.subplots()
     ax1.pie(y, explode=explode, labels=x, autopct='%1.1f%%',
