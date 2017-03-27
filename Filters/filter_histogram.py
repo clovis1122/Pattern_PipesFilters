@@ -28,15 +28,16 @@ def pipe_in(file):
 
 
 
-def __main__(mean_dictionary):
+def __main__(dicc, name):
 
     x = []
     y = []
     counter = 0
+    plt.hold(False)
 
-    for key in mean_dictionary:
+    for key in dicc:
         x.append(key)
-        y.append(mean_dictionary.get(key))
+        y.append(dicc.get(key))
         counter+=1
 
     Xvar = range(counter)
@@ -45,5 +46,5 @@ def __main__(mean_dictionary):
     plt.ylabel('Frecuencia')
     plt.title('Frecuencia del elemento')
     plt.xticks(Xvar,x)
-    stra = "hist_"+str(file.name)+".jpeg"
+    stra = "hist_"+str(name)+".jpeg"
     plt.savefig(stra)
