@@ -11,6 +11,7 @@ from filecmp import cmp
 from collections import Counter
 from datetime import datetime as dt
 import main
+import filter_histogram as hg
 
     ####################################################################
     ###                         pipe in                              ###
@@ -41,8 +42,8 @@ def F_sex_ill(reader):
 
     male_frec = dict(Counter(m))
     fem_frec = dict(Counter(f))
-    ytogram.__main__(male_frec, "male_frec")
-    ytogram.__main__(fem_frec, "fem_frec")
+    hg.__main__(male_frec, "male_frec")
+    hg.__main__(fem_frec, "fem_frec")
     pipe_out(male_frec)
     pipe_out(fem_frec)
     # return male_frec, fem_frec
@@ -52,7 +53,7 @@ def F_ins_pat(reader):
     for row in reader:
         ins.append(row[0])
     ins_frec = dict(Counter(ins))
-    ytogram.__main__(ins_frec, "ins_frec")
+    hg.__main__(ins_frec, "ins_frec")
     pipe_out(ins_frec)
     # return ins_frec
 
@@ -79,10 +80,10 @@ def F_ill_time(reader):
     summer_frec = dict(Counter(summer))
     fall_frec = dict(Counter(fall))
 
-    ytogram.__main__(spring_frec, "spring_frec")
-    ytogram.__main__(summer_frec, "summer_frec")
-    ytogram.__main__(winter_frec, "winter_frec")
-    ytogram.__main__(fall_frec, "fall_frec")
+    hg.__main__(spring_frec, "spring_frec")
+    hg.__main__(summer_frec, "summer_frec")
+    hg.__main__(winter_frec, "winter_frec")
+    hg.__main__(fall_frec, "fall_frec")
 
     pipe_out(winter_frec)
     pipe_out(spring_frec)
