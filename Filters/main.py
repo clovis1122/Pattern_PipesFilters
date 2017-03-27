@@ -70,9 +70,9 @@ def __main__(file):
 
     # Sending files to filter_frequency
 
-    # while not files_to_analize.empty():
-    #     file = files_to_analize.get()
-    #     filter_frequency.pipe_in(file)
+    while not files_to_analize.empty():
+        file = files_to_analize.get()
+        filter_frequency.pipe_in(file)
 
 
     # Sending files to filter_mean
@@ -89,10 +89,17 @@ def __main__(file):
         # mean_dictionary_queue.get())
 
 
+    # Sending freq_files to filter_histogram
+    while not freq_dictionary_queue.empty():
+        dictionary = freq_dictionary_queue.get()
+        filter_histogram.pipe_in(dictionary)
+
+
 
 
 
 
 files_to_analize = Queue.Queue()        # Files for frequency analysis
-mean_dictionary_queue = Queue.Queue()   # Files to generate histograms
+mean_dictionary_queue = Queue.Queue()   # Files to generate histograms based on mean
+freq_dictionary_queue = Queue.Queue()   # Files to generate histograms based on freq
 mean_analize_queue = Queue.Queue()      # Files for mean analysis

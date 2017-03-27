@@ -10,23 +10,24 @@ import csv
 from filecmp import cmp
 from collections import Counter
 from datetime import datetime as dt
-#import main
+import main
 
     ####################################################################
     ###                         pipe in                              ###
     ####################################################################
 
-#def pipe_in(file):
-#    __main__(file)
+def pipe_in(file):
+   __main__(file)
 
 
     ####################################################################
     ###                         pipe out                             ###
     ####################################################################
 
-#def pipe_out(mean_dictionary):
-#    #Send the mean_dictionary to the main mean_dictionary_queue
-#    main.mean_dictionary_queue.put(mean_dictionary)
+def pipe_out(frec_dictionary):
+   #Send the frec_dictionary to the main
+   main.freq_dictionary_queue.put(frec_dictionary)
+
 
 def F_sex_ill(reader):
     f = []
@@ -40,17 +41,17 @@ def F_sex_ill(reader):
 
     male_frec = dict(Counter(m))
     fem_frec = dict(Counter(f))
-    #    pipe_out(male_frec)
-    #    pipe_out(fem_frec)
-    return male_frec, fem_frec
+    pipe_out(male_frec)
+    pipe_out(fem_frec)
+    # return male_frec, fem_frec
 
 def F_ins_pat(reader):
     ins = []
     for row in reader:
         ins.append(row[0])
     ins_frec = dict(Counter(ins))
-    #pipe_out(ins_frec)
-    return ins_frec
+    pipe_out(ins_frec)
+    # return ins_frec
 
 def F_ill_time(reader):
     spring = []
@@ -58,14 +59,14 @@ def F_ill_time(reader):
     fall = []
     winter = []
     for row in reader:
-        datenow = dt.strptime(row[1], "%d-%m-%Y")
-        if ((dt.strptime("22-12-2016", "%d-%m-%Y") <= datenow <= dt.strptime("20-03-2017", "%d-%m-%Y")) == True):
+        datenow = dt.strptime(row[1], "%d/%m/%Y")
+        if ((dt.strptime("22/12/2016", "%d/%m/%Y") <= datenow <= dt.strptime("20/03/2017", "%d/%m/%Y")) == True):
             winter.append(row[0])
-        elif ((dt.strptime("21-03-2016", "%d-%m-%Y") <= datenow <= dt.strptime("21-06-2016", "%d-%m-%Y")) == True):
+        elif ((dt.strptime("21/03/2016", "%d/%m/%Y") <= datenow <= dt.strptime("21/06/2016", "%d/%m/%Y")) == True):
             spring.append(row[0])
-        elif ((dt.strptime("22-06-2016", "%d-%m-%Y") <= datenow <= dt.strptime("23-09-2016", "%d-%m-%Y")) == True):
+        elif ((dt.strptime("22/06/2016", "%d/%m/%Y") <= datenow <= dt.strptime("23/09/2016", "%d/%m/%Y")) == True):
             summer.append(row[0])
-        elif ((dt.strptime("24-09-2016", "%d-%m-%Y") <= datenow <= dt.strptime("21-12-2016", "%d-%m-%Y")) == True):
+        elif ((dt.strptime("24/09/2016", "%d/%m/%Y") <= datenow <= dt.strptime("21/12/2016", "%d/%m/%Y")) == True):
             fall.append(row[0])
         else:
             print "Klk ta pasan2"
@@ -75,15 +76,15 @@ def F_ill_time(reader):
     summer_frec = dict(Counter(summer))
     fall_frec = dict(Counter(fall))
 
-    # pipe_out(winter_frec)
-    # pipe_out(spring_frec)
-    # # pipe_out(summer_frec)
-    # pipe_out(fall_frec)
+    pipe_out(winter_frec)
+    pipe_out(spring_frec)
+    pipe_out(summer_frec)
+    pipe_out(fall_frec)
 
-    return winter_frec
-    return spring_frec
-    return summer_frec
-    return fall_frec
+    # return winter_frec
+    # return spring_frec
+    # return summer_frec
+    # return fall_frec
 
 
 
