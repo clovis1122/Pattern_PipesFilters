@@ -105,11 +105,11 @@ def __main__(file):
     #skips first row
     next(reader)
 
-    if (cmp(file, "ins_pat.csv") == True):
+    if (cmp(file, main.new_path+"/ins_pat.csv") == True):
         F_ins_pat(reader)
-    elif (cmp(file, "ill_time.csv") == True):
+    elif (cmp(file, main.new_path+"/ill_time.csv") == True):
         F_ill_time(reader)
-    elif (cmp(file, "sex_ill.csv") == True):
+    elif (cmp(file, main.new_path+"/sex_ill.csv") == True):
         F_sex_ill(reader)
     else:
         print "Klk ta pasan2"

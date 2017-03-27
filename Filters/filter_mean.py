@@ -129,10 +129,10 @@ def __main__(file):
     doc = open(file,"rb")
     reader = csv.reader(doc)
 
-    if(file == "age_ill.csv"):
+    if(file == main.new_path+"/age_ill.csv"):
         doc.close()
         mean_age_ill(file)
 
-    elif(file == "ill_inv.csv"):
+    elif(file == main.new_path+"/ill_inv.csv"):
         doc.close()
         mean_ill_inv(file)

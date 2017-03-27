@@ -36,7 +36,7 @@ def pipe_out(file):
 def __main__(file):
     doc = open(file,"rb")
     reader = csv.reader(doc)
-    ill_inv = open('ill_inv.csv', 'wb')
+    ill_inv = open(main.new_path+'/ill_inv.csv', 'wb')
     writer = csv.writer(ill_inv)
 
     for row in reader:

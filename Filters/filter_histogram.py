@@ -46,5 +46,5 @@ def __main__(dicc, name):
     plt.ylabel('Frecuencia')
     plt.title('Frecuencia del elemento')
     plt.xticks(Xvar,x)
-    stra = "hist_"+str(name)+".jpeg"
+    stra = main.new_path+"/hist_"+str(name)+".jpeg"
     plt.savefig(stra)

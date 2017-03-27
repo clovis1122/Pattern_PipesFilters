@@ -6,6 +6,7 @@ This module will recieve a file, and ...
 """
 
 import threading
+import os
 import Queue
 import filter_ins_pat
 import filter_age_ill
@@ -27,7 +28,11 @@ import filter_pie_chart
     ###                         pipe in                              ###
     ####################################################################
 
+new_path = ""
+
 def pipe_in(file):
+    create_dir(file)
+    print(new_path)
     __main__(file)
 
 
@@ -86,10 +91,17 @@ def __main__(file):
     while not mean_dictionary_queue.empty():
         d+=1
         dictionary = mean_dictionary_queue.get()
-        filter_histogram.pipe_in(dictionary,d)
+        filter_histogram.pipe_in(dictionary,str(d)+"mean")
         # filter_pie_chart.pipe_in(dictionary) #This one should extract from the frequency_dictionary_queue
         # mean_dictionary_queue.get())
 
+
+    # Sending freq_files to filter_pie_chart
+    z = 0
+    while not freq_dictionary_queue.empty():
+        z+=1
+        dictionary = freq_dictionary_queue.get()
+        filter_pie_chart.pipe_in(dictionary,str(z)+"pie_Chart")
 
     # Sending freq_files to filter_histogram
     c=0
@@ -107,3 +119,11 @@ files_to_analize = Queue.Queue()        # Files for frequency analysis
 mean_dictionary_queue = Queue.Queue()   # Files to generate histograms based on mean
 freq_dictionary_queue = Queue.Queue()   # Files to generate histograms based on freq
 mean_analize_queue = Queue.Queue()      # Files for mean analysis
+
+
+
+def create_dir(file):
+    global new_path
+    new_path = file.replace(".csv", "") #file[:-4]
+    if not os.path.exists(new_path):
+        os.makedirs(new_path)

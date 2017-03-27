@@ -34,7 +34,7 @@ def pipe_in(file):
 def __main__(file):
     doc = open(file,"rb")
     reader = csv.reader(doc)
-    doc_pat = open('doc_pat.csv', 'wb')
+    doc_pat = open(main.new_path+'/doc_pat.csv', 'wb')
     writer = csv.writer(doc_pat)
 
     for row in reader:

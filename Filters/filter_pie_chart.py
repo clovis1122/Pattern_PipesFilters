@@ -12,10 +12,11 @@ import matplotlib.pyplot as plt
     ###                         pipe in                              ###
     ####################################################################
 
-def pipe_in(file):
+def pipe_in(dict,name):
+    __main__(dict,name)
     # Here I should iterate the frequency_dictionary_queue
-    while not main.mean_dictionary_queue.empty():
-        __main__(main.mean_dictionary_queue.get())
+    # while not main.mean_dictionary_queue.empty():
+    #     __main__(main.mean_dictionary_queue.get())
 
 
 
@@ -28,7 +29,7 @@ def pipe_in(file):
 
 
 
-def __main__(mean_dictionary):
+def __main__(mean_dictionary,name):
 
     x = []
     y = []
@@ -45,5 +46,7 @@ def __main__(mean_dictionary):
             shadow=True, startangle=90)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
 
-    plt.savefig('test.jpeg')
+    stra = main.new_path+"/"+str(name)+".jpeg"
+
+    plt.savefig(stra)
     # plt.show()

@@ -32,7 +32,7 @@ def pipe_out(file):
 def __main__(file):
     doc = open(file,"rb")
     reader = csv.reader(doc)
-    ill_time = open('ill_time.csv', 'wb')
+    ill_time = open(main.new_path+'/ill_time.csv', 'wb')
     writer = csv.writer(ill_time)
 
     for row in reader:
