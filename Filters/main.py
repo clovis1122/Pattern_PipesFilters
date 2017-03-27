@@ -13,6 +13,7 @@ import filter_ill_time
 import filter_sex_ill
 import filter_ill_inv
 import filter_doc_pat
+import filter_histogram
 
 
 
@@ -59,11 +60,13 @@ def pipe_out(file):
 
 def __main__(file):
     pipe_out(file)
+
     while not files_to_analize.empty():
         files_to_analize.get()
 
     while not mean_dictionary_queue.empty():
-        print(mean_dictionary_queue.get())
+        filter_histogram.pipe_in(mean_dictionary_queue.get())
+        # mean_dictionary_queue.get())
 
 
 
