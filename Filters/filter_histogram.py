@@ -12,10 +12,10 @@ import matplotlib.pyplot as plt
     ###                         pipe in                              ###
     ####################################################################
 
-def pipe_in(file):
-    while not main.mean_dictionary_queue.empty():
-        dict = main.mean_dictionary_queue.get()
-        __main__(dict)
+def pipe_in(dict,num):
+    # while not main.mean_dictionary_queue.empty():
+        # dict = main.mean_dictionary_queue.get()
+    __main__(dict,num)
 
 
 

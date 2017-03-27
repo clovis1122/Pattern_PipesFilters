@@ -82,17 +82,21 @@ def __main__(file):
 
 
     # Sending files to filter_histogram
+    d=0
     while not mean_dictionary_queue.empty():
+        d+=1
         dictionary = mean_dictionary_queue.get()
-        filter_histogram.pipe_in(dictionary)
+        filter_histogram.pipe_in(dictionary,d)
         # filter_pie_chart.pipe_in(dictionary) #This one should extract from the frequency_dictionary_queue
         # mean_dictionary_queue.get())
 
 
     # Sending freq_files to filter_histogram
+    c=0
     while not freq_dictionary_queue.empty():
+        c+=1
         dictionary = freq_dictionary_queue.get()
-        filter_histogram.pipe_in(dictionary)
+        filter_histogram.pipe_in(dictionary,c)
 
 
 
