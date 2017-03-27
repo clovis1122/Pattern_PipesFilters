@@ -15,18 +15,7 @@ import threading
 import thread
 import main
 import filter_doc_pat
-
-    ####################################################################
-    ###                     FilterThread class                       ###
-    ####################################################################
-class filterThread(threading.Thread):
-    def __init__(self, name, file):
-        threading.Thread.__init__(self)
-        self.name = name
-        self.file = file
-
-    def run(self):
-        main.pipe_in(self.file)
+from multiprocessing import Process
 
 
 
@@ -48,7 +37,6 @@ c = 1
 
 
 if os.path.isdir(directory):
-    # print("This directory exists")
     for file in os.listdir(directory):
         if file.endswith(".csv"):
             filesQueue.put(file)
@@ -61,16 +49,20 @@ else:
 
 while not filesQueue.empty():
     if(filesQueue.qsize()>=5):
+
         arch1 = filesQueue.get()
         arch2 = filesQueue.get()
         arch3 = filesQueue.get()
         arch4 = filesQueue.get()
         arch5 = filesQueue.get()
-        t1 = filterThread("t1", arch1) #threading.Thread(target=main.pipe_in( pipe_out(filesQueue.get()) ))
-        t2 = filterThread("t2", arch2) #threading.Thread(target=main.pipe_in( pipe_out(filesQueue.get()) ))
-        t3 = filterThread("t3", arch3) #threading.Thread(target=main.pipe_in( pipe_out(filesQueue.get()) ))
-        t4 = filterThread("t4", arch4) #threading.Thread(target=main.pipe_in( pipe_out(filesQueue.get()) ))
-        t5 = filterThread("t5", arch5) #threading.Thread(target=main.pipe_in( pipe_out(filesQueue.get()) ))
+
+
+        t1 = Process(target=main.pipe_in(arch1))
+        t2 = Process(target=main.pipe_in(arch2))
+        t3 = Process(target=main.pipe_in(arch3))
+        t4 = Process(target=main.pipe_in(arch4))
+        t5 = Process(target=main.pipe_in(arch5))
+
         t1.start()
         t2.start()
         t3.start()
@@ -82,9 +74,10 @@ while not filesQueue.empty():
         t3.join()
         t4.join()
         t5.join()
+
     else:
         while not filesQueue.empty():
             arch = filesQueue.get()
-            t1 = filterThread("t"+str(c), arch)
+            t1 = Process(target=main.pipe_in(arch))
             c=c+1
             t1.start()

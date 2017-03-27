@@ -1,0 +1,6 @@
+NOMBRE,ID,SEGURO,SEXO,EDAD,ENFERMEDAD,FECHA INGRESO,FECHA SALIDA,FACTURA,DOCTOR A CARGO
+Juan,1,SeNaSa,Hombre,18,Blue Waffle,18/09/2016,20/09/2016,50000,Jorge pared
+Pedro,2,ARS Palic,Hombre,32,Sida,24/06/2016,02/05/2016,120000,Rafael Suazo
+Camila,3,SeNaSa,Mujer,25,Blue Waffle,03/06/2016,03/11/2016,4000,Roberto Amarante
+Camila,3,SeNaSa,Mujer,25,Blue Waffle,03/02/2017,03/03/2017,4000,Roberto Amarante
+Camila,3,SeNaSa,Mujer,25,Blue Waffle,03/03/2017,03/03/2010,4000,Roberto Amarante
