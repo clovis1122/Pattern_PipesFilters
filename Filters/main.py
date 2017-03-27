@@ -14,6 +14,7 @@ import filter_sex_ill
 import filter_ill_inv
 import filter_doc_pat
 import filter_histogram
+import filter_pie_chart
 
 
 
@@ -64,8 +65,11 @@ def __main__(file):
     while not files_to_analize.empty():
         files_to_analize.get()
 
-    while not mean_dictionary_queue.empty():
-        filter_histogram.pipe_in(mean_dictionary_queue.get())
+    filter_pie_chart.pipe_in(mean_dictionary_queue)
+    # while not mean_dictionary_queue.empty():
+    #     dictionary = mean_dictionary_queue.get()
+    #     filter_histogram.pipe_in(dictionary)
+    #     filter_pie_chart.pipe_in(dictionary) #This one should extract from the frequency_dictionary_queue
         # mean_dictionary_queue.get())
 
 
