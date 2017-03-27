@@ -8,6 +8,7 @@ and will deliver a file with two cells:
 
 import csv
 import main
+import filter_mean
 
     ####################################################################
     ###                         pipe in                              ###
@@ -43,5 +44,6 @@ def __main__(file):
 
     ill_inv.close()
     doc.close()
+    filter_mean.pipe_in(ill_inv.name)
 
     #Send the file trought the pipe_out

@@ -8,6 +8,8 @@ and will deliver a file with two cells:
 
 import csv
 import main
+import filter_mean
+
     ####################################################################
     ###                         pipe in                              ###
     ####################################################################
@@ -36,8 +38,9 @@ def __main__(file):
     writer = csv.writer(age_ill)
 
     for row in reader:
-        writer.writerow([row[5], row[3]])
+        writer.writerow([row[4], row[5]])
 
 
     age_ill.close()
     doc.close()
+    filter_mean.pipe_in(age_ill.name)
