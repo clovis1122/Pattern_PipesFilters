@@ -62,8 +62,10 @@ def __main__(file):
     while not files_to_analize.empty():
         files_to_analize.get()
 
-
+    while not mean_dictionary_queue.empty():
+        print(mean_dictionary_queue.get())
 
 
 
 files_to_analize = Queue.Queue()
+mean_dictionary_queue = Queue.Queue()
