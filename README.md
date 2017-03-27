@@ -9,4 +9,4 @@ This repository contains the Python code of an application that implements the P
 * Insurance and patient
 * Illness and sex
 
-The application generates the frequency and mean of this data. This is used to generate histogram and Pie charts which are saved on a folder in the same patch where the app executer is.
+The application generates frecuencies and means by taking the above data as input. Then,it generates histogram and Pie charts which are saved on a folder in the same patch where the app executer is.
